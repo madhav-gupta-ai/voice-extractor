@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voice-extractor"
+version = "1.0.0"
+description = "Extract clean speech from noisy video or audio: noise-type-aware denoising plus vocal separation"
+readme = "README.md"
+authors = [{ name = "Madhav Gupta" }]
+license = { text = "MIT" }
+requires-python = ">=3.12"
+dependencies = [
+    "demucs>=4.1",
+    "imageio-ffmpeg>=0.6",
+    "librosa>=0.11",
+    "noisereduce>=3.0",
+    "numpy>=2.0",
+    "soundfile>=0.13",
+    "torch>=2.2",
+]
+
+[project.scripts]
+voice-extractor = "voice_extractor.extract:main"
+
+[tool.setuptools]
+packages = ["voice_extractor"]
+
+[tool.setuptools.package-data]
+voice_extractor = ["assets/*.pt", "assets/noise/*.wav"]
